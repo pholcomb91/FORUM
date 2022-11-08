@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(59, 59, 59);
+    color: whitesmoke;
+}
+nav {
+    background-color: rgb(98, 98, 98);
+}
+h1 {
+    color:whitesmoke;
+    font-size: 500%;
+    align-content: center;
+    justify-self: center;
+    padding: auto;
+}
+#search {
+    align-items: end;
+    justify-items: end;
+}
+#searchBar {
+    max-width: max-content;
+}
+button {
+    align-self: end;
+    justify-items: end;
+}
+aside {
+    border-radius: 10px;
+    background-color:rgb(98, 98, 98);
+    padding:10 px;
+    margin: 5px;
+}
+#dropdown-menu {
+    
+}
+li {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+    background-color: rgb(59, 59, 59);
+    padding:10 px;
+    margin: 5px;
+}
+article {
+    height: fit-content;
+    border-radius: 10px;
+    background-color:rgb(98, 98, 98);
+    padding:10 px;
+    margin: 5px;
+}
