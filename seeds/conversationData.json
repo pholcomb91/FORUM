@@ -1,0 +1,62 @@
+[
+    {
+        "body": "Is hockey more interesting that football?",
+        "user_id": 4,
+        "topic_id": 1
+    },
+    {
+        "body": "Where can I watch March Madness?",
+        "user_id": 3,
+        "topic_id": 1
+    },
+    {
+        "body": "What is your favorite movie?",
+        "user_id": 3,
+        "topic_id": 2
+    },
+    {
+        "body": "What are some must-see classic movies?",
+        "user_id": 2,
+        "topic_id": 2
+    },
+    {
+        "body": "Twilight is over-rated.",
+        "user_id": 1,
+        "topic_id": 3
+    },
+    {
+        "body": "Looking for a new book. My favorite genres are mystery and suspense. Any recommendations?",
+        "user_id": 3,
+        "topic_id": 3
+    },
+    {
+        "body": "Looking for resources to learn to knit. Free or very inexpensive ideas only please.",
+        "user_id": 1,
+        "topic_id": 4
+    },
+    {
+        "body": "I'm thinking of trying out leather-working, what's the best way to get started?",
+        "user_id": 2,
+        "topic_id": 4
+    },
+    {
+        "body": "Has anyone bought Julia Child's cookbook? Is it worth the money?",
+        "user_id": 1,
+        "topic_id": 5
+    },
+    {
+        "body": "Making creme brulee and it turns out looking like scrambled eggs! What am I doing wrong?",
+        "user_id": 4,
+        "topic_id": 5
+    },
+    {
+        "body": "If I get asked 'why' one more time today, I think my brain is going to break. That is all.",
+        "user_id": 2,
+        "topic_id": 6
+    },
+    {
+        "body": "Is it normal for my toddler to pretend to be a baby? He won't even respond unless I call him baby!",
+        "user_id": 1,
+        "topic_id": 6
+    }
+]
