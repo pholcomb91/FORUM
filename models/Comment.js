@@ -9,6 +9,7 @@ Comment.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
     },
     body: {
       type: DataTypes.STRING,
