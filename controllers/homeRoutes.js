@@ -39,7 +39,7 @@ router.get('/topics/:id', async (req, res) => {
         });
         const topics = topicsList.map((topics) => topics.get({plain: true})
         );
-        res.render('topic', {
+        res.render('topicPart', {
             topics,
         });
     } catch (err) {
@@ -48,6 +48,7 @@ router.get('/topics/:id', async (req, res) => {
     }
 });
 
+// Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
@@ -55,7 +56,9 @@ router.get('/profile', withAuth, async (req, res) => {
         attributes: { exclude: ['password'] },
         // include: [{ model: Project }],
       });
+  
       const user = userData.get({ plain: true });
+  
       res.render('profile', {
         ...user,
         logged_in: true
