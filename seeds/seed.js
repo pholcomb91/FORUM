@@ -19,7 +19,7 @@ const seedDatabase = async () => {
       ...topic,
     });
   }
-  
+
   for (const conversation of conversationData) {
     await Conversation.create({
       ...conversation,
