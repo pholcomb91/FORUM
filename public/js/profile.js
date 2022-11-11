@@ -23,4 +23,4 @@ const newConvoHandler = async (event) => {
 
 document
 .querySelector('.new-convo-form')
-.addEventListener('submit', newFormHandler);
+.addEventListener('submit', newConvoHandler);
