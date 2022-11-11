@@ -21,50 +21,25 @@
             <button type="button" class="btn btn-warning d-flex p-2 m-1">Log Out</button>
             {{/if}}
         </div>
+
+         <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login/signup</a>
+        {{/if}}
+
     </nav>
     <div>
       {{{ body }}}
     </div>
-    <div class="row col-11 container-fluid display-flex justify-content-center align-center p-2">
-        <div class="col-3 container-fluid">
-            <aside class="col-12 p-3 container-fluid rounded-3 bg-grey-500 border border-warning justify-content-start">
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Topic</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g. Worlds best Cat">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Start a Conversation</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Type here"></textarea>
-                    </div>
-                </form>
-            </aside>
-            <aside class="col-12">
-                <div class="dropdown align-center">
-                    <button class="btn btn-outline-warning btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Topics
-                    </button>
-                    <ul id="topics" class="dropdown-menu">
-                        {{#each convos.name as |topic|}}
-                        {{> topic}}
-                        {{/each}}
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#post route">+ Add a Topic</a></li>
-                    </ul>
-                </div>
-            </aside>
-        </div>
-        <div class="col-9 container-fluid">
-            <article class="col-12 border border-warning p-3">
-                <h3>Example Topic</h3>
-                <h4>Example Username</h4>
-                <blockquote>Bacon ipsum dolor amet landjaeger andouille boudin meatloaf. Cupim beef jowl porchetta boudin shankle. T-bone cupim picanha, tri-tip strip steak chislic kevin capicola ham hock ground round flank fatback porchetta chicken. Fatback pork belly chislic capicola, chuck alcatra turkey brisket chicken salami andouille flank frankfurter doner ham.</blockquote>
-            </article>
-            {{#each convos as |conversation|}}
-            {{> conversation}}
-            {{/each}}
-        </div>
-    </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>
