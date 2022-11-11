@@ -16,6 +16,12 @@
               Forum for Life
             </h1>
         </div>
+        <div id="navBody">
+            {{#if logged_in}}
+            <button type="button" class="btn btn-warning d-flex p-2 m-1">Log Out</button>
+            {{/if}}
+        </div>
+
          <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a> |
@@ -23,13 +29,17 @@
         {{else}}
         <a href="/login">login/signup</a>
         {{/if}}
+
     </nav>
     <div>
       {{{ body }}}
     </div>
+
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>
