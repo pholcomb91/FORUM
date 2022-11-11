@@ -17,10 +17,14 @@ router.get('/', withAuth, async (req, res) => {
             },
         ],
     });
+    const allTopics = await Topic.findAll();
+    const topicList = allTopics.map((t) => t.get({ plain:true }));
     const convos = conversations.map((convo) => convo.get({ plain:true }));
 
+    console.log("convos", convos)
     res.render('homepage', {
         convos,
+        topicList,
         logged_in: req.session.logged_in
     });
     } catch (err) {
@@ -43,9 +47,6 @@ router.get('/topics/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-//Not done build the get routes in here.
-// router.get('/', async (req, res))
-//Not done
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -77,5 +78,4 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
-  
 module.exports = router;
