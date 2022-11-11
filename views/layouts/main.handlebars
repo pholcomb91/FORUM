@@ -18,14 +18,14 @@
         </div>
         <div id="navBody">
             {{#if logged_in}}
-            <button type="button" class="btn btn-warning d-flex p-2 m-1">Log Out</button>
+            <button type="button" class="btn btn-warning d-flex p-2 m-1" id="logout">Log Out</button>
             {{/if}}
         </div>
 
          <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <button type="button" class="btn btn-warning d-flex p-2 m-1"><a href="/profile">Profile</a></button>
+        <button type="button" class="btn btn-warning d-flex p-2 m-1" id="logout">Logout</button>
         {{else}}
         <a href="/login">login/signup</a>
         {{/if}}

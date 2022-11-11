@@ -28,6 +28,6 @@ User.hasMany(Comment, {
 
 Comment.belongsTo(User);
 
-module.exports = { Comment, Conversation, Topic, User };
+module.exports = {Comment, Conversation, User, Topic};
 
 
