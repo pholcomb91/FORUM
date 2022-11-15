@@ -15,6 +15,14 @@ Conversation.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    topic_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+          model: 'topic',
+          key: 'id',
+      },
+    },
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -23,14 +31,7 @@ Conversation.init(
             key: 'id',
         },
     },
-    topic_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'topic',
-            key: 'id',
-        },
-    },
+
   },
   {
     sequelize,

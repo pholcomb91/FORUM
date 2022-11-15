@@ -34,19 +34,25 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/topics/:id', async (req, res) => {
     try {
-        const topicsList = await Topic.findByPk(req.params.id, {
-            include
-        });
-        const topics = topicsList.map((topics) => topics.get({plain: true})
-        );
-        res.render('topicPart', {
-            topics,
-        });
+      const topicData = await Topic.findByPk(req.params.id, {
+        include: [
+            {
+                model: Conversation,
+                attributes: ['body', 'user_id'],
+            },
+        ],
+      });
+  
+      const topic = topicData.get({ plain: true });
+  
+      res.render('conversation', {
+        ...topic,
+        logged_in: req.session.logged_in
+      });
     } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+      res.status(500).json(err);
     }
-});
+  });
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -54,13 +60,25 @@ router.get('/profile', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        // include: [{ model: Project }],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['body', 'user_id'],
+            },
+            {
+                model: Comment,
+                attributes: ['body', 'user_id'],
+            },
+        ],
       });
-  
+      
       const user = userData.get({ plain: true });
+      const allTopics = await Topic.findAll();
+      const topicList = allTopics.map((t) => t.get({ plain:true }));
   
       res.render('profile', {
-        ...user,
+        user,
+        topicList,
         logged_in: true
       });
     } catch (err) {
