@@ -4,7 +4,8 @@ const User = require('./User');
 const Topic = require('./Topic');
 
 Topic.hasMany(Conversation, {
-    foreignKey: 'topic_id'
+    foreignKey: 'topic_id',
+    onDelete: 'CASCADE',
 });
 
 Conversation.belongsTo(Topic);

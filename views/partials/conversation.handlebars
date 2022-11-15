@@ -1,0 +1,12 @@
+
+{{#each convos as |conversation| }}
+<article class="col-12 border border-warning p-3">
+    <h4>{{conversation.name}}</h4>
+    <blockquote>{{conversation.body}}</blockquote>
+    {{#each conversation.comment as |comment|}}
+    {{> comment}}
+    {{/each}}
+    <input id="comment-input" placeholder="Add a comment"></input>
+</article>
+
+            
