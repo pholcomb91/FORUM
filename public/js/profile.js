@@ -2,12 +2,13 @@ const newConvoHandler = async (event) => {
     event.preventDefault();
   
     const body = document.querySelector('#convo-body').value.trim();
-    const topic = document.querySelector('#convo-topic').value.trim();
+    const topic_id = document.querySelector('#topics-list').value;
+    const newTopic = document.querySelector('#newTopic');
   
-    if (body && topic) {
-      const response = await fetch(`/api/convo`, {
+    if (body && topic_id) {
+      const response = await fetch('/api/conversation', {
         method: 'POST',
-        body: JSON.stringify({ name, needed_funding, description }),
+        body: JSON.stringify({ body, topic_id }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -17,9 +18,12 @@ const newConvoHandler = async (event) => {
         document.location.replace('/profile');
       } else {
         alert('Failed to create project');
-      }
-    }
-  };
+      };
+    };
+  // } else if (body && newTopic) {
+
+  // }
+};
 
 document
 .querySelector('.new-convo-form')
