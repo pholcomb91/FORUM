@@ -1,9 +1,11 @@
-<article class="col-12 border border-warning p-3">
+<article class="col-12 border border-warning p-3 new-comm">
     <h4>{{conver2.topic.name}}</h4>
     <blockquote>{{conver2.body}}</blockquote>
     {{#each conver2.comments as |comment|}}
     {{> comment comm=comment}}
     {{/each}}
+    <input id="comment-input" placeholder="Add a comment"></input>
+    <button>Submit</button>
 </article>
-
+<script src="./js/comment.js"></script>
             
