@@ -11,8 +11,9 @@
       <div class="form-group">
         <textarea class="form-control rounded" type="text" id="convo-body" name="convo-body" rows="3"></textarea>
         <label for="topic">Choose a topic:</label>
-        <select name="topics" id="topics-list">
-           {{#each topicList as |topic|}}
+        <select name="topics" class="border rounded" id="topics-list">
+            <option selected>Select a topic</option>
+            {{#each topicList as |topic|}}
             {{> topicPart topo=topic}}
             {{/each}}
           {{!-- <option class="dropdown-item" id="newTopic">+ Add a Topic</option> --}}
@@ -28,17 +29,17 @@
     </form>
   </div>
   {{#if user}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6 project-list container rounded border border-warning m-1">
     <h3>Your Conversations:</h3>
     {{#each user.conversations as |conversation|}}
     <div class="row mb-2">
-      <div class="col-md-8">
+      <div class="col-md-8 ">
         <h4><a href=/conversation/{{conversation.id}}>{{conversation.body}}</a></h4>
       </div>
-      {{/each}}
     </div>
-    {{/if}}
+    {{/each}}
   </div>
+  {{/if}}
 </div>
 
 <script src="./js/profile.js"></script>
