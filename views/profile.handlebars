@@ -15,11 +15,15 @@
            {{#each topicList as |topic|}}
             {{> topicPart topo=topic}}
             {{/each}}
-          <option class="dropdown-item" id="newTopic">+ Add a Topic</option>
+          {{!-- <option class="dropdown-item" id="newTopic">+ Add a Topic</option> --}}
         </select>
+        <label for="topic">Or create a new topic:</label>
+        </br>
+        <input id='topic-input' class="border border-warning p-1 rounded bg-grey-500 text-secondary comm-input" type="text"></input>
+        <button class="btn btn-outline-warning rounded" id="new-topic-btn" type="submit">Add</button>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-warning">Submit</button>
+        <button type="submit" class="btn btn-warning" id="new-convo-btn">Submit</button>
       </div>
     </form>
   </div>

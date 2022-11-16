@@ -31,3 +31,13 @@ Peter:
 
 Ron:
 - comment post route from homepage and then from conversation page
+
+Credits:
+.value for input
+https://stackoverflow.com/questions/48070987/how-to-get-user-input-from-javascript-form
+
+model validations
+https://sequelize.org/docs/v6/
+
+console log using handlebars:
+https://stackoverflow.com/questions/17499742/how-do-i-add-console-log-javascript-logic-inside-of-a-handlebars-template

@@ -1,5 +1,4 @@
-<form class="col-12 border border-warning p-3 new-comm">
-    {{log con}}
+<form class="col-12 border border-warning p-3 new-comm-id" con-id="{{con.id}}">
     <h4>{{con.body}}</h4>
     {{#each con.comments as |comment|}}
     <div class="card col-12 border border-warning p-3" style="width: 18rem;">
@@ -8,4 +7,9 @@
         </div>
     </div>
     {{/each}}
+    <div class="card-body input-group">
+        <input id='comment-input' class="border border-warning p-1 rounded bg-grey-500 text-secondary comm-input" placeholder='Add a comment' type="text"></input>
+        <button class="btn btn-outline-warning rounded new-comm-test" type="submit">Add</button>
+    </div>
 </form>
+<script src="../js/commentid.js"></script>
