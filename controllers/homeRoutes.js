@@ -45,7 +45,7 @@ router.get('/topics/:id', async (req, res) => {
       const topic = topicData.get({ plain: true });
   
       res.render('conversation', {
-        ...topic,
+        topic,
         logged_in: req.session.logged_in
       });
     } catch (err) {

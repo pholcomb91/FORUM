@@ -1,11 +1,17 @@
-<form class="col-12 border border-warning p-3 new-comm">
-    {{log con}}
-    <h4>{{con.body}}</h4>
-    {{#each con.comments as |comment|}}
-    <div class="card col-12 border border-warning p-3" style="width: 18rem;">
-        <div class="card-body">
-            <p class="card-text">{{comment.body}}</p>
+<div class="col-12 d-flex justify-content-center">
+    <form class="col-8 border border-warning rounded p-3 new-comm m-1 bg-grey-500">
+        {{log con}}
+        <h4 class="m-1">{{con.body}}</h4>
+        {{#each con.comments as |comment|}}
+        <div class="col-12 border rounded border-warning p-1 m-1" style="width: 18rem;">
+            <div class="bg-grey-500">
+                <p>{{comment.body}}</p>
+            </div>
         </div>
-    </div>
-    {{/each}}
-</form>
+        {{/each}}
+        <div class="card-body input-group m-1">
+            <input id='comment-input' class="border border-warning p-1 rounded text-secondary" rows="3" placeholder='Add a comment'></input>
+            <button class="btn btn-outline-warning rounded" type="button">Add</button>
+        </div>
+    </form>
+</div>
