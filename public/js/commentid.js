@@ -1,6 +1,6 @@
 const newCommHandlerId = async (event) => {
     event.preventDefault();
-
+    console.log(event.target);
     var body = document.querySelector('input').value;
     var conversation_id = event.target.getAttribute("con-id");
     
