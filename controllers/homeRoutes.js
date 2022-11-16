@@ -20,8 +20,7 @@ router.get('/', withAuth, async (req, res) => {
     const allTopics = await Topic.findAll();
     const topicList = allTopics.map((t) => t.get({ plain:true }));
     const convos = conversations.map((convo) => convo.get({ plain:true }));
-
-    // console.log("convos", convos)
+    
     res.render('homepage', {
         convos,
         topicList,
@@ -108,8 +107,6 @@ router.get('/profile', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
 });
-//Not done build the get routes in here.
-module.exports = router;
 
 router.get('/login', (req, res) => {
     // If a session exists, redirect the request to the homepage
@@ -120,3 +117,5 @@ router.get('/login', (req, res) => {
   
     res.render('login');
   });
+
+  module.exports = router;
