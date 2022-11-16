@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{User.username}}!</h2>
+    <h2>Welcome, {{user.username}}!</h2>
   </div>
 </div>
 
@@ -24,20 +24,13 @@
       </div>
     </form>
   </div>
-
-  {{#if projects.length}}
+  {{#if user}}
   <div class="col-md-6 project-list">
-    <h3>Your Conversations and Comments:</h3>
-
-    {{#each projects as |project|}}
+    <h3>Your Conversations:</h3>
+    {{#each user.conversations as |conversation|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        {{! need to display converasations, then below display comments }}
-        {{! possibly link to another page where user can view each convo separately? }}
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+        <h4><a href=/conversation/{{conversation.id}}>{{conversation.body}}</a></h4>
       </div>
     </div>
     {{/each}}

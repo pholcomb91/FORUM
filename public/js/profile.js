@@ -1,10 +1,11 @@
 const newConvoHandler = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
   
     const body = document.querySelector('#convo-body').value.trim();
     const topic_id = document.querySelector('#topics-list').value;
-    const newTopic = document.querySelector('#newTopic');
-  
+    if (topic_id === "+ Add a Topic") {
+      newTopicHandler();
+    };
     if (body && topic_id) {
       const response = await fetch('/api/conversation', {
         method: 'POST',
@@ -20,11 +21,26 @@ const newConvoHandler = async (event) => {
         alert('Failed to create project');
       };
     };
-  // } else if (body && newTopic) {
+};
 
-  // }
+const newTopicHandler = async (event) => {
+  let name = prompt("Please enter a new topic:");
+  const response = await fetch('/api/newtopic', {
+    method: 'POST',
+    body: JSON.stringify({ name }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+      document.location.replace('/profile');
+  } else {
+    alert('Failed to create project');
+  };
 };
 
 document
 .querySelector('.new-convo-form')
 .addEventListener('submit', newConvoHandler);
+

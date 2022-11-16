@@ -21,7 +21,7 @@ router.get('/', withAuth, async (req, res) => {
     const topicList = allTopics.map((t) => t.get({ plain:true }));
     const convos = conversations.map((convo) => convo.get({ plain:true }));
 
-    console.log("convos", convos)
+    // console.log("convos", convos)
     res.render('homepage', {
         convos,
         topicList,
@@ -54,6 +54,31 @@ router.get('/topics/:id', async (req, res) => {
     }
   });
 
+  router.get('/conversation/:id', async (req, res) => {
+    try {
+      const convoData = await Conversation.findByPk(req.params.id, {
+        include: [
+            {
+                model: Comment,
+            },
+            {
+              model: User,
+              attributes: ['username']
+            },
+        ],
+      });
+  
+      const con = convoData.get({ plain: true });
+      console.log(con);
+      res.render('idConversation', {
+        con,
+        logged_in: req.session.logged_in
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
@@ -63,11 +88,9 @@ router.get('/profile', withAuth, async (req, res) => {
         include: [
             {
                 model: Conversation,
-                attributes: ['body', 'user_id'],
             },
             {
                 model: Comment,
-                attributes: ['body', 'user_id'],
             },
         ],
       });
