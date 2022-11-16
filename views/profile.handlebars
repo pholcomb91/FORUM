@@ -1,17 +1,16 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{User.username}}!</h2>
+<div class="col">
+  <div class="col-12 m-auto d-flex justify-content-center">
+    <h2>Welcome, {{user.username}}!</h2>
   </div>
-</div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Start a Conversation:</h3>
+  <div class="col-10 m-auto d-flex justify-content-center">
+    <div class="col d-flex container rounded border border-warning bg-grey-500 p-1 m-1 justify-content-center">
+      <h3>Start a Conversation:</h3>
 
     <form class="form new-convo-form">
       <div class="form-group">
-        <input class="form-input" type="text" id="convo-body" name="convo-body" />
-        <label for="dog-names">Which topic best fits your conversation?:</label>
+        <textarea class="form-control rounded" type="text" id="convo-body" name="convo-body" rows="3"></textarea>
+        <label for="topic">Choose a topic:</label>
         <select name="topics" id="topics-list">
            {{#each topicList as |topic|}}
             {{> topicPart topo=topic}}
@@ -20,29 +19,22 @@
         </select>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-warning">Submit</button>
       </div>
     </form>
   </div>
-
-  {{#if projects.length}}
+  {{#if user}}
   <div class="col-md-6 project-list">
-    <h3>Your Conversations and Comments:</h3>
-
-    {{#each projects as |project|}}
+    <h3>Your Conversations:</h3>
+    {{#each user.conversations as |conversation|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        {{! need to display converasations, then below display comments }}
-        {{! possibly link to another page where user can view each convo separately? }}
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+        <h4><a href=/conversation/{{conversation.id}}>{{conversation.body}}</a></h4>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-      </div>
+      {{/each}}
     </div>
-    {{/each}}
+    {{/if}}
   </div>
-  {{/if}}
 </div>
 
 <script src="./js/profile.js"></script>
