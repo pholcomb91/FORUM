@@ -1,8 +1,8 @@
-const newCommHandler = async (event) => {
+const newCommHandlerId = async (event) => {
     event.preventDefault();
 
-    var body = event.target.lastElementChild.querySelector('input').value;
-    var conversation_id = event.target.getAttribute("convo-id");
+    var body = document.querySelector('input').value;
+    var conversation_id = event.target.getAttribute("con-id");
     
     if (body && conversation_id) {
       const response = await fetch(`/api/comm`, {
@@ -22,5 +22,5 @@ const newCommHandler = async (event) => {
   };
 
 document
-.querySelector('.new-comm')
-.addEventListener('submit', newCommHandler);
+.querySelector('.new-comm-id')
+.addEventListener('submit', newCommHandlerId);

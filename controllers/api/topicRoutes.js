@@ -7,7 +7,6 @@ router.post('/', withAuth, async (req, res) => {
 
     const newTopic = await Topic.create({
       ...req.body,
-    //   user_id: req.session.user_id,
     });
     console.log(req.body);
     res.status(200).json(newTopic);
