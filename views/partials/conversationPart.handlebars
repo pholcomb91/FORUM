@@ -1,4 +1,4 @@
-<article class="col-12 border border-warning p-3 new-comm">
+<form class="col-12 border border-warning p-3 new-comm" convo-id="{{conver2.id}}">
     <h4>{{conver2.topic.name}}</h4>
     <blockquote>{{conver2.body}}</blockquote>
     {{#each conver2.comments as |comment|}}
@@ -6,6 +6,5 @@
     {{/each}}
     <input id="comment-input" placeholder="Add a comment"></input>
     <button>Submit</button>
-</article>
-<script src="./js/comment.js"></script>
+</form>
             
