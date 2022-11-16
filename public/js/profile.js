@@ -1,11 +1,8 @@
 const newConvoHandler = async (event) => {
-    // event.preventDefault();
   
     const body = document.querySelector('#convo-body').value.trim();
     const topic_id = document.querySelector('#topics-list').value;
-    if (topic_id === "+ Add a Topic") {
-      newTopicHandler();
-    };
+ 
     if (body && topic_id) {
       const response = await fetch('/api/conversation', {
         method: 'POST',
@@ -24,7 +21,7 @@ const newConvoHandler = async (event) => {
 };
 
 const newTopicHandler = async (event) => {
-  let name = prompt("Please enter a new topic:");
+  let name = document.querySelector('#topic-input').value;
   const response = await fetch('/api/newtopic', {
     method: 'POST',
     body: JSON.stringify({ name }),
@@ -41,6 +38,10 @@ const newTopicHandler = async (event) => {
 };
 
 document
-.querySelector('.new-convo-form')
-.addEventListener('submit', newConvoHandler);
+.querySelector('#new-convo-btn')
+.addEventListener('click', newConvoHandler);
+
+document
+.querySelector('#new-topic-btn')
+.addEventListener('click', newTopicHandler);
 

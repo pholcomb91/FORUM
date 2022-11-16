@@ -1,13 +1,13 @@
-<div class="border border-warning rounded"> 
-    <form class="col-12 p-3 new-comm" convo-id="{{conver2.id}}">
+<div class="border border-warning rounded" convo-id="{{conver2.id}}"> 
+    <form class="col-12 p-3" convo-id="{{conver2.id}}">
         <h4>{{conver2.topic.name}}</h4>
         <blockquote>{{conver2.body}}</blockquote>
         {{#each conver2.comments as |comment|}}
         {{> commentPart comm=comment}}
         {{/each}}
         <div class="input-group">
-            <input id='comment-input' class="border border-warning p-1 rounded bg-grey-500 text-secondary" placeholder='Add a comment'></input>
-            <button class="btn btn-outline-warning rounded" type="button">Add</button>
+            <input id='comment-input' class="border border-warning p-1 rounded bg-grey-500 text-secondary comm-input" placeholder='Add a comment' type="text"></input>
+            <button class="btn btn-outline-warning rounded" type="submit">Add</button>
         </div>
     </form>
 </div>
