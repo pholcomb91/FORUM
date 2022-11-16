@@ -10,12 +10,12 @@ Forum for life is a forum that allows an online user to create a profile and be 
 - [Contributions](#Contributions)
 
 ## Deployed Link 
-
+https://fathomless-sea-62897.herokuapp.com/login
 
 ## Preview 
-<!--- add photos of website --->
-
-
+![photo of signup/login page](public/assets/Signup1.png)
+![Photo of homepage](public/assets/Homepage2.png)
+![Photo of profile page](public/assets/Profile3.png)
 ## Contributions
  - Autumn Legere (https://github.com/autumnlegere)
  - Peter Holcomb (https://github.com/pholcomb91)
