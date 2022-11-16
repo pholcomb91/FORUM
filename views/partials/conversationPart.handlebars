@@ -1,5 +1,5 @@
-<article class="row col-12 border border-warning m-1">
-    <h4 class="">{{conver2.topic.name}}</h4>
+<form class="col-12 border border-warning p-3 new-comm" convo-id="{{conver2.id}}">
+    <h4>{{conver2.topic.name}}</h4>
     <blockquote>{{conver2.body}}</blockquote>
     {{#each conver2.comments as |comment|}}
     {{> commentPart comm=comment}}
@@ -8,6 +8,6 @@
         <input id='comment-input' class="border border-warning p-1 rounded bg-grey-500 text-secondary" placeholder='Add a comment'></input>
         <button class="btn btn-outline-warning rounded" type="button">Add</button>
     </div>
-</article>
+</form>
 
             

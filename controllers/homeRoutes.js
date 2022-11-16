@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
     const allTopics = await Topic.findAll();
     const topicList = allTopics.map((t) => t.get({ plain:true }));
     const convos = conversations.map((convo) => convo.get({ plain:true }));
-
+    
     res.render('homepage', {
         convos,
         topicList,
@@ -33,20 +33,52 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/topics/:id', async (req, res) => {
     try {
-        const topicsList = await Topic.findByPk(req.params.id, {
-            include
-        });
-        const topics = topicsList.map((topics) => topics.get({plain: true})
-        );
-        res.render('topic', {
-            topics,
-        });
+      const topicData = await Topic.findByPk(req.params.id, {
+        include: [
+            {
+                model: Conversation,
+                attributes: ['body', 'user_id'],
+            },
+        ],
+      });
+  
+      const topic = topicData.get({ plain: true });
+  
+      res.render('conversation', {
+        ...topic,
+        logged_in: req.session.logged_in
+      });
     } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+      res.status(500).json(err);
     }
-});
+  });
 
+  router.get('/conversation/:id', async (req, res) => {
+    try {
+      const convoData = await Conversation.findByPk(req.params.id, {
+        include: [
+            {
+                model: Comment,
+            },
+            {
+              model: User,
+              attributes: ['username']
+            },
+        ],
+      });
+  
+      const con = convoData.get({ plain: true });
+      console.log(con);
+      res.render('idConversation', {
+        con,
+        logged_in: req.session.logged_in
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+// Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
@@ -55,17 +87,17 @@ router.get('/profile', withAuth, async (req, res) => {
         include: [
             {
                 model: Conversation,
-                attributes: ['body', 'user_id'],
             },
             {
                 model: Comment,
-                attributes: ['body', 'user_id', 'conversation_id'],
             },
         ],
       });
+      
       const user = userData.get({ plain: true });
       const allTopics = await Topic.findAll();
       const topicList = allTopics.map((t) => t.get({ plain:true }));
+  
       res.render('profile', {
         user,
         topicList,
@@ -75,6 +107,7 @@ router.get('/profile', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
 });
+
 router.get('/login', (req, res) => {
     // If a session exists, redirect the request to the homepage
     if (req.session.logged_in) {
@@ -85,4 +118,4 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
-module.exports = router;
+  module.exports = router;

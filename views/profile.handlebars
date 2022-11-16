@@ -7,30 +7,29 @@
     <div class="col d-flex container rounded border border-warning bg-grey-500 p-1 m-1 justify-content-center">
       <h3>Start a Conversation:</h3>
 
-      <form class="form new-convo-form">
-        <div class="form-group">
-          <textarea class="form-control rounded" type="text" id="convo-body" name="convo-body" rows="3"></textarea>
-          <label for="project-funding">Choose a Topic:</label>
-          <input class="form-input rounded" type="number" id="convo-topic" name="convo-topic">
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-warning">Submit</button>
-        </div>
-      </form>
-    </div>
-
-    {{#if user.length}}
-    <div class="col-md-6 project-list">
-      <h3>Your Conversations and Comments:</h3>
-
-      {{#each projects as |project|}}
-      <div class="row mb-2">
-        <div class="col-md-8">
-          <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-        </div>
-        <div class="col-md-4">
-          <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-        </div>
+    <form class="form new-convo-form">
+      <div class="form-group">
+        <textarea class="form-control rounded" type="text" id="convo-body" name="convo-body" rows="3"></textarea>
+        <label for="topic">Choose a topic:</label>
+        <select name="topics" id="topics-list">
+           {{#each topicList as |topic|}}
+            {{> topicPart topo=topic}}
+            {{/each}}
+          <option class="dropdown-item" id="newTopic">+ Add a Topic</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-warning">Submit</button>
+      </div>
+    </form>
+  </div>
+  {{#if user}}
+  <div class="col-md-6 project-list">
+    <h3>Your Conversations:</h3>
+    {{#each user.conversations as |conversation|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href=/conversation/{{conversation.id}}>{{conversation.body}}</a></h4>
       </div>
       {{/each}}
     </div>

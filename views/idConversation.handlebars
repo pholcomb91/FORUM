@@ -1,0 +1,11 @@
+<form class="col-12 border border-warning p-3 new-comm">
+    {{log con}}
+    <h4>{{con.body}}</h4>
+    {{#each con.comments as |comment|}}
+    <div class="card col-12 border border-warning p-3" style="width: 18rem;">
+        <div class="card-body">
+            <p class="card-text">{{comment.body}}</p>
+        </div>
+    </div>
+    {{/each}}
+</form>
