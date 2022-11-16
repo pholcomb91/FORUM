@@ -21,7 +21,6 @@ router.get('/', withAuth, async (req, res) => {
     const topicList = allTopics.map((t) => t.get({ plain:true }));
     const convos = conversations.map((convo) => convo.get({ plain:true }));
 
-    console.log("convos", convos)
     res.render('homepage', {
         convos,
         topicList,
@@ -53,18 +52,29 @@ router.get('/profile', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        // include: [{ model: Project }],
+        include: [
+            {
+                model: Conversation,
+                attributes: ['body', 'user_id'],
+            },
+            {
+                model: Comment,
+                attributes: ['body', 'user_id', 'conversation_id'],
+            },
+        ],
       });
       const user = userData.get({ plain: true });
+      const allTopics = await Topic.findAll();
+      const topicList = allTopics.map((t) => t.get({ plain:true }));
       res.render('profile', {
-        ...user,
+        user,
+        topicList,
         logged_in: true
       });
     } catch (err) {
       res.status(500).json(err);
     }
 });
-
 router.get('/login', (req, res) => {
     // If a session exists, redirect the request to the homepage
     if (req.session.logged_in) {
